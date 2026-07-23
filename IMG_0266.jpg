@@ -1,0 +1,113 @@
+{
+  "title": "Icefields 2026",
+  "subtitle": "Eight days through the Canadian Rockies",
+  "introduction": "A day-by-day journal of the route, photographs, places, and memories from the trip.",
+  "days": [
+    {
+      "day": 1,
+      "date": "Jul 13",
+      "title": "Day 1",
+      "summary": "",
+      "highlights": [],
+      "lodging": "",
+      "featured_photo_id": "IMG_5541",
+      "photo_ids": [
+        "IMG_5541",
+        "IMG_9879",
+        "IMG_9922"
+      ]
+    },
+    {
+      "day": 2,
+      "date": "Jul 14",
+      "title": "Day 2",
+      "summary": "",
+      "highlights": [],
+      "lodging": "",
+      "featured_photo_id": "IMG_5613",
+      "photo_ids": [
+        "IMG_5613",
+        "IMG_0023",
+        "IMG_0071",
+        "IMG_0066"
+      ]
+    },
+    {
+      "day": 3,
+      "date": "Jul 15",
+      "title": "Day 3",
+      "summary": "",
+      "highlights": [],
+      "lodging": "",
+      "featured_photo_id": "IMG_0127",
+      "photo_ids": [
+        "IMG_0127",
+        "IMG_0143",
+        "IMG_0171",
+        "IMG_5696"
+      ]
+    },
+    {
+      "day": 4,
+      "date": "Jul 16",
+      "title": "Day 4",
+      "summary": "",
+      "highlights": [],
+      "lodging": "",
+      "featured_photo_id": "IMG_0266",
+      "photo_ids": [
+        "IMG_0266"
+      ]
+    },
+    {
+      "day": 5,
+      "date": "Jul 18",
+      "title": "Day 5",
+      "summary": "",
+      "highlights": [],
+      "lodging": "",
+      "featured_photo_id": "IMG_0335",
+      "photo_ids": [
+        "IMG_0335",
+        "IMG_0347"
+      ]
+    },
+    {
+      "day": 6,
+      "date": "Jul 19",
+      "title": "Day 6",
+      "summary": "",
+      "highlights": [],
+      "lodging": "",
+      "featured_photo_id": null,
+      "photo_ids": []
+    },
+    {
+      "day": 7,
+      "date": "Jul 20",
+      "title": "Day 7",
+      "summary": "",
+      "highlights": [],
+      "lodging": "",
+      "featured_photo_id": "IMG_0433",
+      "photo_ids": [
+        "IMG_0433",
+        "IMG_0467"
+      ]
+    },
+    {
+      "day": 8,
+      "date": "Jul 21",
+      "title": "Day 8",
+      "summary": "",
+      "highlights": [],
+      "lodging": "",
+      "featured_photo_id": "IMG_0489",
+      "photo_ids": [
+        "IMG_0489",
+        "IMG_0495",
+        "IMG_0516"
+      ]
+    }
+  ]
+}
