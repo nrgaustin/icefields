@@ -1,25 +1,23 @@
-# Icefields 2026 — synchronized explorer iteration three
-
-This package removes the browser-side Garmin FIT decoder. The nine FIT files were
-decoded during site generation into `assets/data/trip.json`.
+# Icefields 2026 — synchronized explorer iteration four
 
 ## Upload
 Upload all contents of this directory to the root of the GitHub Pages repository,
 replacing the existing `index.html` and `assets` directory.
 
-## Data included
-- 155,986 recorded FIT record messages
-- GPS, timestamp, cumulative distance, elevation, speed, heart rate, power,
-  cadence, temperature and derived grade
-- Corrected chronology: Icefields08 is Day 1; Icefields01 is Day 8
-- Day 2 combines Icefields07 and Icefields06
+## Changes in this iteration
+- Every metric chart displays the full 612-mile profile.
+- Per-pixel min/max envelopes retain brief peaks that ordinary downsampling can miss.
+- Clicking a chart uses both horizontal and vertical position to select the closest
+  actual recorded value near that trip location.
+- Numeric metric cards were replaced by dynamic fixed-scale horizontal gauges.
+- Photo markers were removed from the map.
+- A photograph persists until the journey reaches the next photograph.
+- Clicking the map displays the geographically nearest photo.
+- A thin, spatially accurate photo-film ribbon sits below the master slider.
+- Play/Pause is available over the map and below the slider.
+- Spacebar toggles Play/Pause unless a form control has keyboard focus.
 
 ## Curation
 - `photo_catalog.csv` contains photo metadata for future edits.
 - `notes_catalog.csv` contains editable notes/events.
 - Send edited CSV files back to ChatGPT to regenerate the JSON used by the site.
-
-## Privacy
-The original FIT files are not included. The website data still contains the route
-and recorded ride metrics, so keep the repository private if you do not want those
-values publicly accessible.
