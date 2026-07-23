@@ -2,47 +2,99 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Icefields 2026 — Interactive Cycling Journey</title>
+<meta name="description" content="A synchronized map, timeline, charts, notes and photographs from an eight-stage Canadian Rockies cycling journey.">
+<title>Icefields 2026 — Synchronized Trip Explorer</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
 <header class="hero"><div class="hero-inner">
-<div class="kicker">Eight stages · July 2026</div>
+<div class="kicker">Interactive expedition · iteration two</div>
 <h1>Through the Canadian Rockies</h1>
-<p>A synchronized map, route timeline, ride summary, and photographic record of a 612-mile cycling journey.</p>
-<div class="chips"><span class="chip">612.2 miles</span><span class="chip">25,161 ft climbed</span><span class="chip">43:16 moving time</span><span class="chip">19 sample photos</span></div>
+<p>Explore the trip at two scales simultaneously: the full 612-mile journey and the real recorded data at each point along the road.</p>
+<div class="chips"><span class="chip">9 Garmin FIT recordings</span><span class="chip">8 stages</span><span class="chip">612.2 miles</span><span class="chip">Synchronized photos and notes</span></div>
 </div></header>
+
 <main>
 <section class="section"><div class="wrap">
-<div class="section-head"><div><div class="eyebrow">Explorer beta</div><h2>Move through the trip</h2></div>
-<p class="lede">Drag the slider, press play, click the route, or select a photo. The map position, stage statistics, distance, and nearby photographs remain synchronized.</p></div>
-<div class="explorer">
-<div class="explorer-grid">
-<div id="map" class="map"></div>
-<aside class="side">
-<div class="now"><div><div id="location" class="place">Mile 0.0</div><div id="coords" class="note"></div></div><span id="dayBadge" class="day-badge">Day 1</span></div>
-<div class="metrics">
-<div class="metric"><small>Stage avg speed</small><strong id="speed">—</strong></div>
-<div class="metric"><small>Stage avg HR</small><strong id="hr">—</strong></div>
-<div class="metric"><small>Stage avg power</small><strong id="power">—</strong></div>
-<div class="metric"><small>Stage climbing</small><strong id="gain">—</strong></div>
+<div class="section-head">
+<div><div class="eyebrow">Micro + macro</div><h2>One position, every view</h2></div>
+<p class="lede">Drag the master slider, click the map, scrub any chart, choose a photo moment, or press play. The map, charts, values, photographs, notes, stage context and trip progress all move together.</p>
 </div>
-<div id="photoPanel" class="photo-panel"><div class="photo-empty">Loading nearby photograph…</div></div>
+
+<div id="loading" class="loading"><div class="spinner"></div><div><strong>Preparing the journey</strong><div id="loadText" class="subtle">Loading the Garmin decoder…</div></div></div>
+
+<div id="explorer" class="explorer" hidden>
+<div class="top-grid">
+<div class="map-wrap">
+<div id="map" class="map"></div>
+<div class="map-mode">
+<button class="active" data-follow="local">Local</button>
+<button data-follow="stage">Stage</button>
+<button data-follow="trip">Whole trip</button>
+</div>
+</div>
+
+<aside class="side">
+<div class="now"><div><div id="location" class="place">Mile 0.0</div><div id="clock" class="subtle"></div><div id="coords" class="subtle"></div></div><span id="dayBadge" class="badge">Day 1</span></div>
+
+<div><div class="subtle" style="margin-bottom:6px">Metric window</div>
+<div class="metric-context">
+<button class="context-btn active" data-context="instant">Instant</button>
+<button class="context-btn" data-context="mile">±½ mile</button>
+<button class="context-btn" data-context="hour">±30 min</button>
+<button class="context-btn" data-context="stage">Stage</button>
+<button class="context-btn" data-context="trip">Trip</button>
+</div></div>
+
+<div class="metrics">
+<div class="metric"><small>Elevation</small><strong id="elevation">—</strong><em>selected window</em></div>
+<div class="metric"><small>Grade</small><strong id="grade">—</strong><em>smoothed locally</em></div>
+<div class="metric"><small>Speed</small><strong id="speed">—</strong><em>selected window</em></div>
+<div class="metric"><small>Heart rate</small><strong id="hr">—</strong><em>selected window</em></div>
+<div class="metric"><small>Power</small><strong id="power">—</strong><em>selected window</em></div>
+<div class="metric"><small>Cadence</small><strong id="cadence">—</strong><em>selected window</em></div>
+</div>
+
+<div id="eventCard" class="event-card" hidden></div>
+<div id="photoPanel" class="photo-panel"><div class="photo-empty">Nearby photographs will appear here.</div></div>
 <div id="photoStrip" class="photo-strip"></div>
-<p class="note">Current metrics are stage-level summaries in this first beta. The next data build will synchronize second-by-second elevation, speed, power, heart rate, cadence, and grade.</p>
 </aside>
 </div>
-<div class="timeline-bar">
-<div class="timeline-top"><strong id="distance">0 of 612.2 mi</strong><span id="progress">0% complete</span></div>
-<input id="tripSlider" type="range" min="0" value="0" step="1" aria-label="Position along the complete trip">
-<div class="stage-labels"><span>D1</span><span>D2</span><span>D3</span><span>D4</span><span>D5</span><span>D6</span><span>D7</span><span>D8</span></div>
-<div class="controls"><button id="play" class="btn primary" type="button">▶ Play</button><button id="reset" class="btn" type="button">Reset</button></div>
-</div></div>
+
+<div class="timeline-section">
+<div class="timeline-head"><strong id="distance">0 of 612.2 mi</strong><span id="progress">0% complete</span></div>
+<input id="tripSlider" type="range" min="0" value="0" step="1" aria-label="Position through the complete trip">
+<div class="timeline-ribbons">
+<div id="stageRibbon" class="stage-ribbon"></div>
+<div id="eventRibbon" class="event-ribbon"></div>
+</div>
+<div class="controls">
+<button id="play" class="btn primary" type="button">▶ Play</button>
+<label class="subtle">Speed <select id="playSpeed"><option value="1">1×</option><option value="2" selected>2×</option><option value="5">5×</option></select></label>
+<button id="reset" class="btn" type="button">Reset</button>
+<span class="subtle">Pink ticks are photos; black dots are notes/events.</span>
+</div>
+
+<div id="chartControls" class="chart-controls"></div>
+<div id="charts" class="charts"></div>
+</div>
+</div>
 </div></section>
-<section class="section"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Stages</div><h2>The trip at a glance</h2></div><p class="lede">The Day 2 gap remains visible rather than inventing an unrecorded route. Photographs are placed using their original embedded GPS coordinates.</p></div><div class="summary-grid"><div class="summary-card"><span>Day 1 · Jul 13</span><strong>66.1 mi</strong><span>4,990 ft climbing · 5:45</span></div><div class="summary-card"><span>Day 2 · Jul 14</span><strong>79.4 mi</strong><span>3,914 ft climbing · 5:48</span></div><div class="summary-card"><span>Day 3 · Jul 15</span><strong>83.3 mi</strong><span>3,501 ft climbing · 5:53</span></div><div class="summary-card"><span>Day 4 · Jul 16</span><strong>93.2 mi</strong><span>3,366 ft climbing · 6:22</span></div><div class="summary-card"><span>Day 5 · Jul 18</span><strong>71.3 mi</strong><span>2,244 ft climbing · 4:46</span></div><div class="summary-card"><span>Day 6 · Jul 19</span><strong>91.2 mi</strong><span>3,084 ft climbing · 6:30</span></div><div class="summary-card"><span>Day 7 · Jul 20</span><strong>74.8 mi</strong><span>3,005 ft climbing · 4:56</span></div><div class="summary-card"><span>Day 8 · Jul 21</span><strong>52.8 mi</strong><span>1,056 ft climbing · 3:12</span></div></div></div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="eyebrow">How this iteration works</div><h2>Real FIT data, lighter visual clutter</h2></div>
+<p class="lede">The browser decodes the original Garmin files directly. Photo markers are clustered into moments rather than covering the route, and the timeline retains every photograph as a fine pink tick so dense areas remain discoverable.</p></div>
+<div class="summary-grid">
+<div class="summary-card"><span>Charts</span><strong>Selectable</strong><span>Elevation, grade, speed, HR, power and cadence share one aligned axis.</span></div>
+<div class="summary-card"><span>Context</span><strong>Five scales</strong><span>Instant, local mile, local hour, stage and whole-trip summaries.</span></div>
+<div class="summary-card"><span>Photos</span><strong>Clustered</strong><span>Map clusters protect the route line; timeline ticks preserve density.</span></div>
+<div class="summary-card"><span>Notes</span><strong>Editable</strong><span>Add milestones and stories in notes.json or notes_catalog.csv.</span></div>
+</div>
+</div></section>
 </main>
-<footer>Icefields Cycling Trip · Interactive explorer beta · July 2026</footer>
+<footer>Icefields Cycling Trip · Synchronized explorer iteration two · July 2026</footer>
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="assets/js/explorer.js"></script>
+<script type="module" src="assets/js/explorer.js"></script>
 </body></html>

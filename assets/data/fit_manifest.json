@@ -1,0 +1,47 @@
+[
+  {
+    "file": "assets/fit/day01.fit",
+    "day": 1,
+    "label": "day01"
+  },
+  {
+    "file": "assets/fit/day02a.fit",
+    "day": 2,
+    "label": "day02a"
+  },
+  {
+    "file": "assets/fit/day02b.fit",
+    "day": 2,
+    "label": "day02b"
+  },
+  {
+    "file": "assets/fit/day03.fit",
+    "day": 3,
+    "label": "day03"
+  },
+  {
+    "file": "assets/fit/day04.fit",
+    "day": 4,
+    "label": "day04"
+  },
+  {
+    "file": "assets/fit/day05.fit",
+    "day": 5,
+    "label": "day05"
+  },
+  {
+    "file": "assets/fit/day06.fit",
+    "day": 6,
+    "label": "day06"
+  },
+  {
+    "file": "assets/fit/day07.fit",
+    "day": 7,
+    "label": "day07"
+  },
+  {
+    "file": "assets/fit/day08.fit",
+    "day": 8,
+    "label": "day08"
+  }
+]
