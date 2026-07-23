@@ -1,4 +1,4 @@
 id,day,distance_mi,timestamp,type,title,description,importance
 trip-start,1,0.0,,start,Trip start,Beginning of Day 1.,major
-rest-day,5,322.0,,note,Rest day before Day 5,No riding activity was recorded on July 17.,minor
+rest-day,5,321.985,,note,Rest day before Day 5,No riding activity was recorded on July 17.,minor
 trip-finish,8,612.2,,finish,Trip finish,End of Day 8.,major

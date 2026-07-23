@@ -1,32 +1,25 @@
-# Icefields 2026 — synchronized explorer iteration two
+# Icefields 2026 — synchronized explorer iteration three
 
-## Upload to GitHub Pages
-Upload **all contents** of this folder to the root of the existing `icefields-2026`
-repository. Replace the prior `index.html` and `assets` folder.
+This package removes the browser-side Garmin FIT decoder. The nine FIT files were
+decoded during site generation into `assets/data/trip.json`.
 
-The first visit may take several seconds because the browser decodes nine original
-Garmin FIT files. Subsequent interaction is local and immediate.
+## Upload
+Upload all contents of this directory to the root of the GitHub Pages repository,
+replacing the existing `index.html` and `assets` directory.
 
-## New features
-- Real recorded FIT data decoded in the browser
-- Shared master position across map, slider, charts, photos and notes
-- Selectable aligned charts: elevation, grade, speed, heart rate, power and cadence
-- Moving chart cursor and value dots
-- Instant, local-mile, local-hour, stage and trip summary windows
-- Local, stage and whole-trip map views
-- Clustered photo moments on the map
-- Full photo-density marks on the timeline
-- Editable notes/events
+## Data included
+- 155,986 recorded FIT record messages
+- GPS, timestamp, cumulative distance, elevation, speed, heart rate, power,
+  cadence, temperature and derived grade
+- Corrected chronology: Icefields08 is Day 1; Icefields01 is Day 8
+- Day 2 combines Icefields07 and Icefields06
 
-## Curation files
-- `photo_catalog.csv`: captions, photographer names and featured-photo fields
-- `notes_catalog.csv`: a convenient editable notes list
-- `assets/data/photos.json`: data actually read by the site
-- `assets/data/notes.json`: notes actually read by the site
+## Curation
+- `photo_catalog.csv` contains photo metadata for future edits.
+- `notes_catalog.csv` contains editable notes/events.
+- Send edited CSV files back to ChatGPT to regenerate the JSON used by the site.
 
-Editing a CSV does not automatically update the matching JSON yet. For this iteration,
-send the edited CSV back to ChatGPT and it can regenerate the website data.
-
-## Data privacy
-The public site includes the original FIT activity files and therefore the recorded route
-and sensor data. Do not publish the repository if you do not want those records public.
+## Privacy
+The original FIT files are not included. The website data still contains the route
+and recorded ride metrics, so keep the repository private if you do not want those
+values publicly accessible.

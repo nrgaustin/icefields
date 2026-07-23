@@ -1,100 +1,33 @@
 <!doctype html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="A synchronized map, timeline, charts, notes and photographs from an eight-stage Canadian Rockies cycling journey.">
 <title>Icefields 2026 — Synchronized Trip Explorer</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="assets/css/site.css">
-</head>
-<body>
-<header class="hero"><div class="hero-inner">
-<div class="kicker">Interactive expedition · iteration two</div>
-<h1>Through the Canadian Rockies</h1>
-<p>Explore the trip at two scales simultaneously: the full 612-mile journey and the real recorded data at each point along the road.</p>
-<div class="chips"><span class="chip">9 Garmin FIT recordings</span><span class="chip">8 stages</span><span class="chip">612.2 miles</span><span class="chip">Synchronized photos and notes</span></div>
-</div></header>
-
-<main>
-<section class="section"><div class="wrap">
-<div class="section-head">
-<div><div class="eyebrow">Micro + macro</div><h2>One position, every view</h2></div>
-<p class="lede">Drag the master slider, click the map, scrub any chart, choose a photo moment, or press play. The map, charts, values, photographs, notes, stage context and trip progress all move together.</p>
-</div>
-
-<div id="loading" class="loading"><div class="spinner"></div><div><strong>Preparing the journey</strong><div id="loadText" class="subtle">Loading the Garmin decoder…</div></div></div>
-
+</head><body>
+<header class="hero"><div class="hero-inner"><div class="kicker">Interactive expedition · preprocessed data edition</div><h1>Through the Canadian Rockies</h1>
+<p>Explore the complete journey at two scales simultaneously: the 612-mile route and the actual recorded values at each point along the road.</p>
+<div class="chips"><span class="chip">156,000+ recorded samples</span><span class="chip">8 stages</span><span class="chip">612.2 miles</span><span class="chip">Synchronized photos and notes</span></div></div></header>
+<main><section class="section"><div class="wrap">
+<div class="section-head"><div><div class="eyebrow">Micro + macro</div><h2>One position, every view</h2></div><p class="lede">Drag the master slider, click the map, scrub any chart, choose a photograph, or press play. The route, charts, values, photographs, notes, stage context, and trip progress remain synchronized.</p></div>
+<div id="loading" class="loading"><div class="spinner"></div><div><strong>Preparing the journey</strong><div id="loadText" class="subtle">Loading the local trip data…</div></div></div>
 <div id="explorer" class="explorer" hidden>
-<div class="top-grid">
-<div class="map-wrap">
-<div id="map" class="map"></div>
-<div class="map-mode">
-<button class="active" data-follow="local">Local</button>
-<button data-follow="stage">Stage</button>
-<button data-follow="trip">Whole trip</button>
-</div>
-</div>
-
+<div class="top-grid"><div class="map-wrap"><div id="map" class="map"></div><div class="map-mode"><button class="active" data-follow="local">Local</button><button data-follow="stage">Stage</button><button data-follow="trip">Whole trip</button></div></div>
 <aside class="side">
 <div class="now"><div><div id="location" class="place">Mile 0.0</div><div id="clock" class="subtle"></div><div id="coords" class="subtle"></div></div><span id="dayBadge" class="badge">Day 1</span></div>
-
-<div><div class="subtle" style="margin-bottom:6px">Metric window</div>
-<div class="metric-context">
-<button class="context-btn active" data-context="instant">Instant</button>
-<button class="context-btn" data-context="mile">±½ mile</button>
-<button class="context-btn" data-context="hour">±30 min</button>
-<button class="context-btn" data-context="stage">Stage</button>
-<button class="context-btn" data-context="trip">Trip</button>
-</div></div>
-
-<div class="metrics">
-<div class="metric"><small>Elevation</small><strong id="elevation">—</strong><em>selected window</em></div>
-<div class="metric"><small>Grade</small><strong id="grade">—</strong><em>smoothed locally</em></div>
-<div class="metric"><small>Speed</small><strong id="speed">—</strong><em>selected window</em></div>
-<div class="metric"><small>Heart rate</small><strong id="hr">—</strong><em>selected window</em></div>
-<div class="metric"><small>Power</small><strong id="power">—</strong><em>selected window</em></div>
-<div class="metric"><small>Cadence</small><strong id="cadence">—</strong><em>selected window</em></div>
-</div>
-
-<div id="eventCard" class="event-card" hidden></div>
-<div id="photoPanel" class="photo-panel"><div class="photo-empty">Nearby photographs will appear here.</div></div>
-<div id="photoStrip" class="photo-strip"></div>
-</aside>
-</div>
-
-<div class="timeline-section">
-<div class="timeline-head"><strong id="distance">0 of 612.2 mi</strong><span id="progress">0% complete</span></div>
+<div><div class="subtle" style="margin-bottom:6px">Metric window</div><div class="metric-context"><button class="context-btn active" data-context="instant">Instant</button><button class="context-btn" data-context="mile">±½ mile</button><button class="context-btn" data-context="hour">±30 min</button><button class="context-btn" data-context="stage">Stage</button><button class="context-btn" data-context="trip">Trip</button></div></div>
+<div class="metrics"><div class="metric"><small>Elevation</small><strong id="elevation">—</strong><em>selected window</em></div><div class="metric"><small>Grade</small><strong id="grade">—</strong><em>150 m smoothing</em></div><div class="metric"><small>Speed</small><strong id="speed">—</strong><em>selected window</em></div><div class="metric"><small>Heart rate</small><strong id="hr">—</strong><em>selected window</em></div><div class="metric"><small>Power</small><strong id="power">—</strong><em>selected window</em></div><div class="metric"><small>Cadence</small><strong id="cadence">—</strong><em>selected window</em></div></div>
+<div id="eventCard" class="event-card" hidden></div><div id="photoPanel" class="photo-panel"><div class="photo-empty">Nearby photographs will appear here.</div></div><div id="photoStrip" class="photo-strip"></div>
+</aside></div>
+<div class="timeline-section"><div class="timeline-head"><strong id="distance">0 of 612.2 mi</strong><span id="progress">0% complete</span></div>
 <input id="tripSlider" type="range" min="0" value="0" step="1" aria-label="Position through the complete trip">
-<div class="timeline-ribbons">
-<div id="stageRibbon" class="stage-ribbon"></div>
-<div id="eventRibbon" class="event-ribbon"></div>
-</div>
-<div class="controls">
-<button id="play" class="btn primary" type="button">▶ Play</button>
-<label class="subtle">Speed <select id="playSpeed"><option value="1">1×</option><option value="2" selected>2×</option><option value="5">5×</option></select></label>
-<button id="reset" class="btn" type="button">Reset</button>
-<span class="subtle">Pink ticks are photos; black dots are notes/events.</span>
-</div>
-
-<div id="chartControls" class="chart-controls"></div>
-<div id="charts" class="charts"></div>
-</div>
-</div>
-</div></section>
-
-<section class="section"><div class="wrap">
-<div class="section-head"><div><div class="eyebrow">How this iteration works</div><h2>Real FIT data, lighter visual clutter</h2></div>
-<p class="lede">The browser decodes the original Garmin files directly. Photo markers are clustered into moments rather than covering the route, and the timeline retains every photograph as a fine pink tick so dense areas remain discoverable.</p></div>
-<div class="summary-grid">
-<div class="summary-card"><span>Charts</span><strong>Selectable</strong><span>Elevation, grade, speed, HR, power and cadence share one aligned axis.</span></div>
-<div class="summary-card"><span>Context</span><strong>Five scales</strong><span>Instant, local mile, local hour, stage and whole-trip summaries.</span></div>
-<div class="summary-card"><span>Photos</span><strong>Clustered</strong><span>Map clusters protect the route line; timeline ticks preserve density.</span></div>
-<div class="summary-card"><span>Notes</span><strong>Editable</strong><span>Add milestones and stories in notes.json or notes_catalog.csv.</span></div>
-</div>
-</div></section>
-</main>
-<footer>Icefields Cycling Trip · Synchronized explorer iteration two · July 2026</footer>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script type="module" src="assets/js/explorer.js"></script>
+<div class="timeline-ribbons"><div id="stageRibbon" class="stage-ribbon"></div><div id="eventRibbon" class="event-ribbon"></div></div>
+<div class="controls"><button id="play" class="btn primary" type="button">▶ Play</button><label class="subtle">Speed <select id="playSpeed"><option value="1">1×</option><option value="2" selected>2×</option><option value="5">5×</option></select></label><button id="reset" class="btn" type="button">Reset</button><span class="subtle">Pink ticks are photos; black dots are notes/events.</span></div>
+<div id="chartControls" class="chart-controls"></div><div id="charts" class="charts"></div>
+</div></div></div></section>
+<section class="section"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Architecture</div><h2>Fast, local, and dependable</h2></div><p class="lede">The FIT files were decoded once during site generation. Visitors load a compact local data file, so the explorer no longer depends on a Garmin decoder or external JavaScript module.</p></div>
+<div class="summary-grid"><div class="summary-card"><span>Recorded data</span><strong>Second by second</strong><span>GPS, elevation, speed, heart rate, power, cadence, temperature, and derived grade.</span></div><div class="summary-card"><span>Context</span><strong>Five scales</strong><span>Instant, local mile, local hour, stage, and whole-trip summaries.</span></div><div class="summary-card"><span>Photos</span><strong>Clustered</strong><span>Map clusters preserve the route while timeline ticks retain every image.</span></div><div class="summary-card"><span>Notes</span><strong>Editable</strong><span>Add milestones and stories through the included curation files.</span></div></div>
+</div></section></main><footer>Icefields Cycling Trip · Synchronized explorer iteration three · July 2026</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="assets/js/explorer.js"></script>
 </body></html>
