@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Icefields 2026 — Interactive Cycling Journey</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<header class="hero"><div class="hero-inner">
+<div class="kicker">Eight stages · July 2026</div>
+<h1>Through the Canadian Rockies</h1>
+<p>A synchronized map, route timeline, ride summary, and photographic record of a 612-mile cycling journey.</p>
+<div class="chips"><span class="chip">612.2 miles</span><span class="chip">25,161 ft climbed</span><span class="chip">43:16 moving time</span><span class="chip">19 sample photos</span></div>
+</div></header>
+<main>
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="eyebrow">Explorer beta</div><h2>Move through the trip</h2></div>
+<p class="lede">Drag the slider, press play, click the route, or select a photo. The map position, stage statistics, distance, and nearby photographs remain synchronized.</p></div>
+<div class="explorer">
+<div class="explorer-grid">
+<div id="map" class="map"></div>
+<aside class="side">
+<div class="now"><div><div id="location" class="place">Mile 0.0</div><div id="coords" class="note"></div></div><span id="dayBadge" class="day-badge">Day 1</span></div>
+<div class="metrics">
+<div class="metric"><small>Stage avg speed</small><strong id="speed">—</strong></div>
+<div class="metric"><small>Stage avg HR</small><strong id="hr">—</strong></div>
+<div class="metric"><small>Stage avg power</small><strong id="power">—</strong></div>
+<div class="metric"><small>Stage climbing</small><strong id="gain">—</strong></div>
+</div>
+<div id="photoPanel" class="photo-panel"><div class="photo-empty">Loading nearby photograph…</div></div>
+<div id="photoStrip" class="photo-strip"></div>
+<p class="note">Current metrics are stage-level summaries in this first beta. The next data build will synchronize second-by-second elevation, speed, power, heart rate, cadence, and grade.</p>
+</aside>
+</div>
+<div class="timeline-bar">
+<div class="timeline-top"><strong id="distance">0 of 612.2 mi</strong><span id="progress">0% complete</span></div>
+<input id="tripSlider" type="range" min="0" value="0" step="1" aria-label="Position along the complete trip">
+<div class="stage-labels"><span>D1</span><span>D2</span><span>D3</span><span>D4</span><span>D5</span><span>D6</span><span>D7</span><span>D8</span></div>
+<div class="controls"><button id="play" class="btn primary" type="button">▶ Play</button><button id="reset" class="btn" type="button">Reset</button></div>
+</div></div>
+</div></section>
+<section class="section"><div class="wrap"><div class="section-head"><div><div class="eyebrow">Stages</div><h2>The trip at a glance</h2></div><p class="lede">The Day 2 gap remains visible rather than inventing an unrecorded route. Photographs are placed using their original embedded GPS coordinates.</p></div><div class="summary-grid"><div class="summary-card"><span>Day 1 · Jul 13</span><strong>66.1 mi</strong><span>4,990 ft climbing · 5:45</span></div><div class="summary-card"><span>Day 2 · Jul 14</span><strong>79.4 mi</strong><span>3,914 ft climbing · 5:48</span></div><div class="summary-card"><span>Day 3 · Jul 15</span><strong>83.3 mi</strong><span>3,501 ft climbing · 5:53</span></div><div class="summary-card"><span>Day 4 · Jul 16</span><strong>93.2 mi</strong><span>3,366 ft climbing · 6:22</span></div><div class="summary-card"><span>Day 5 · Jul 18</span><strong>71.3 mi</strong><span>2,244 ft climbing · 4:46</span></div><div class="summary-card"><span>Day 6 · Jul 19</span><strong>91.2 mi</strong><span>3,084 ft climbing · 6:30</span></div><div class="summary-card"><span>Day 7 · Jul 20</span><strong>74.8 mi</strong><span>3,005 ft climbing · 4:56</span></div><div class="summary-card"><span>Day 8 · Jul 21</span><strong>52.8 mi</strong><span>1,056 ft climbing · 3:12</span></div></div></div></section>
+</main>
+<footer>Icefields Cycling Trip · Interactive explorer beta · July 2026</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/js/explorer.js"></script>
+</body></html>
