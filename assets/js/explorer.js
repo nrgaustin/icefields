@@ -17,10 +17,20 @@ function col(k){return state.trip.columns[k]}
 function binaryDistance(mi){const a=col("d");let lo=0,hi=a.length-1;while(lo<hi){const m=(lo+hi)>>1;if(a[m]<mi)lo=m+1;else hi=m}return lo}
 function buildPrefixesAndRanges(){
  for(const k of Object.keys(METRICS)){
-  const values=col(k),sum=new Float64Array(values.length+1),count=new Uint32Array(values.length+1),valid=[];
-  for(let i=0;i<values.length;i++){const v=values[i];sum[i+1]=sum[i]+(finite(v)?v:0);count[i+1]=count[i]+(finite(v)?1:0);if(finite(v))valid.push(v)}
+  const values=col(k),sum=new Float64Array(values.length+1),count=new Uint32Array(values.length+1);
+  let min=Infinity,max=-Infinity,validCount=0;
+  for(let i=0;i<values.length;i++){
+    const v=values[i],ok=finite(v);
+    sum[i+1]=sum[i]+(ok?v:0);
+    count[i+1]=count[i]+(ok?1:0);
+    if(ok){
+      validCount++;
+      if(v<min)min=v;
+      if(v>max)max=v;
+    }
+  }
   state.prefix[k]={sum,count};
-  let min=Math.min(...valid),max=Math.max(...valid);
+  if(!validCount){min=0;max=1}
   if(k==="g"){const a=Math.max(Math.abs(min),Math.abs(max));min=-a;max=a}
   if(k==="p"||k==="s"||k==="h"||k==="c")min=Math.min(0,min);
   state.ranges[k]={min,max};
